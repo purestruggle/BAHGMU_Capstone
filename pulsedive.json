@@ -1,0 +1,93 @@
+{
+    "appid": "ca135dc0-6270-4fb1-8d12-715632418896",
+    "name": "PulseDive",
+    "description": "PulseDive Open Source Intelligence Tool",
+    "type": "information",
+    "product_vendor": "PulseDive",
+    "logo": "pulsedive.svg",
+    "logo_dark": "pulsedive_dark.svg",
+    "product_name": "PulseDive",
+    "product_version_regex": ".*",
+    "publisher": "GMU CYSE",
+    "license": "Copyright (c) GMU CYSE, 2018",
+    "app_version": "1.0.0",
+    "utctime_updated": "2018-04-27T10:00:15.420244Z",
+    "package_name": "phantom_pulsedive",
+    "main_module": "pulsedive_connector.pyc",
+    "min_phantom_version": "3.5.206",
+    "app_wizard_version": "1.0.0",
+    "configuration": {
+        "base_url": {
+            "description": "API Base URL",
+            "data_type": "string",
+            "required": true,
+            "value_list": [],
+            "default": "https://pulsedive.com/api/info.php?",
+            "order": 0
+        }
+    },
+    "actions": [
+        {
+            "action": "test connectivity",
+            "identifier": "test_connectivity",
+            "description": "Validate the asset configuration for connectivity using supplied configuration",
+            "verbose": "",
+            "type": "test",
+            "read_only": true,
+            "parameters": {},
+            "output": [],
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup ip",
+            "identifier": "lookup_ip",
+            "description": "Returns information on IP address",
+            "verbose": "Use this action to return information on the IP address.",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "ip": {
+                    "description": "IP to get information on",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "ip",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        }
+    ]
+}
